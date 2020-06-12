@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Mascota</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+	<!-- Los fragment se insertan ya sea con th:include o th:replace -->
+	<!-- th:include simplemente se inserta dentro del espacio asignado -->
+	<!-- th:replace remplaza todo el espacio asignado por el fragment correspondiente -->
+	<!-- sintaxis th:include/replace="rutafragment :: Nombre del fragment -->
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<!-- th:action toma la accion de un form que se ejecutara por medio de un boton-->
+		<!-- @{} Expresion de enlace -->
+		<!-- ${} Declaracion de Variable -->
+		<!-- th:object declara un objeto que sera usado por los *{} -->
+		<form th:action="@{/jefeventas/registrar}" method="post" th:object="${jefeventas}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			<!-- *{} Setea la variable -->
+				<label for="idrace">ID:</label> <input type="text"
+					class="form-control" th:field="*{idjefeVentas}"></input>
+
+				<div class="form-group">
+					<label for="nombre">NOMBRE:</label> <input type="text"
+						th:field="*{nombjefeVentas}" class="form-control" id="nombre"></input>
+						<!-- th:if Para establecer condiciones, las variables solo son booleanas -->
+						<!-- #{} Expresion de mensaje -->
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nombjefeVentas')}" th:errors="*{nombjefeVentas}"></div>
+						
+						
+
+						
+					<label for="tipojefeventas" class=" col-sm-2 col-form-label">Tipo Jefe: </label>
+				<select
+						class="form-control" th:field="*{tipojefeventas.idTipoJefeVentas}">
+						<option th:each="t: ${listaTiposJefeVentas}" th:value="${t.idTipoJefeVentas}"
+							th:text="${t.nombreTipo}"
+							th:selected="(${t.idTipoJefeVentas} == *{tipojefeventas.idTipoJefeVentas})"></option>
+					</select>
+					
+					
+					<div class="form-group">
+						
+						<label for="apellido">APELLIDO:</label> 
+						<input type="text" th:field="*{apelljefeVentas}" class="form-control" id="apellido"></input>
+						
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('apelljefeVentas')}" 
+								th:errors="*{apelljefeVentas}">
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						
+						<label for="dni">DNI:</label> 
+						<input type="text" th:field="*{dnijefeVentas}" class="form-control" id="dni"></input>
+						
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('dnijefeVentas')}" 
+								th:errors="*{dnijefeVentas}">
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						
+						<label for="area">AREA:</label> 
+						<input type="text" th:field="*{areajefeVentas}" class="form-control" id="area"></input>
+						
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('areajefeVentas')}" 
+								th:errors="*{areajefeVentas}">
+						</div>
+						
+					</div>
+					
+					
+					
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/jefeventas/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
