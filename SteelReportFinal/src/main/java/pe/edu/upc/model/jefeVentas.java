@@ -27,12 +27,12 @@ public class jefeVentas implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)	
-	private int idPet;
+	private int idjefeVentas;
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="namePet", nullable = false, length=60)
-	private String namePet;
+	@Column(name="nombjefeVentas", nullable = false, length=90)
+	private String nombjefeVentas;
 	
 	@NotNull
 	@Past(message="No puedes seleccionar un dia que NO existe")
