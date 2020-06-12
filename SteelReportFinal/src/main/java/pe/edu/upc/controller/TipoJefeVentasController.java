@@ -60,7 +60,7 @@ public class TipoJefeVentasController {
 					return "redirect:/tipojefeventas/listar";
 				}
 				else {
-					model.addAttribute("mensaje", "Ocurrio un problema grave :c");
+					model.addAttribute("mensaje", "Ocurrio un roche");
 					return "redirect:/tipojefeventas/irRegistrar";
 				}
 			}

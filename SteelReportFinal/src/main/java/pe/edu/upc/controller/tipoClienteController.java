@@ -60,7 +60,7 @@ public class tipoClienteController {
 					return "redirect:/tipocliente/listar";
 				}
 				else {
-					model.addAttribute("mensaje", "Ocurrio un problema grave :c");
+					model.addAttribute("mensaje", "Ocurrio un roche");
 					return "redirect:/tipocliente/irRegistrar";
 				}
 			}
