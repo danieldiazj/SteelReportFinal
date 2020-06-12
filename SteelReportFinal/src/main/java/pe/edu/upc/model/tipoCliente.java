@@ -1,5 +1,5 @@
 package pe.edu.upc.model;
-
+//js
 import java.io.Serializable;
 
 import javax.persistence.Column;

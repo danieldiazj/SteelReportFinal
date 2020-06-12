@@ -11,7 +11,7 @@ import pe.edu.upc.model.tipoCliente;
 import pe.edu.upc.repository.ItipoClienteRepository;
 import pe.edu.upc.service.ItipoClienteService;
 
-
+//s
 @Service
 public class tipoClienteServiceImpl implements ItipoClienteService {
 
