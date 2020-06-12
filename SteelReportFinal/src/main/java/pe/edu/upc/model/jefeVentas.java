@@ -1,7 +1,7 @@
 package pe.edu.upc.model;
 
 import java.io.Serializable;
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,14 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name="jefeVentas")
@@ -34,75 +31,113 @@ public class jefeVentas implements Serializable {
 	@Column(name="nombjefeVentas", nullable = false, length=90)
 	private String nombjefeVentas;
 	
-	@NotNull
-	@Past(message="No puedes seleccionar un dia que NO existe")
-	@Temporal(TemporalType.DATE)
-	@Column(name="birthDatePet")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date birthDatePet;
+	
+	@NotEmpty(message="No puede estar vacio")
+	@NotBlank(message="No puede estar en blanco")
+	@Column(name="apelljefeVentas", nullable = false, length=90)
+	private String apelljefeVentas;
+	
+	@NotEmpty(message="No puede estar vacio")
+	@NotBlank(message="No puede estar en blanco")
+	@Column(name="dnijefeVentas", nullable = false, length=8)
+	private String dnijefeVentas;
+	
+	
+	@NotEmpty(message="No puede estar vacio")
+	@NotBlank(message="No puede estar en blanco")
+	@Column(name="areajefeVentas", nullable = false, length=60)
+	private String areajefeVentas;
+	
+	
 
 	@ManyToOne
-	@JoinColumn(name="idRace", nullable=false)
-	private Race race;
+	@JoinColumn(name="idTipoJefeVentas", nullable=false)
+	private TipoJefeVentas tipojefeventas;
 
-	@ManyToOne
-	@JoinColumn(name="idDueno", nullable=false)
-	private Dueno dueno;
 
 	public jefeVentas() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public jefeVentas(int idPet,
-			String namePet,
-			Date birthDatePet, Race race,
-			Dueno dueno) {
+
+	public jefeVentas(int idjefeVentas,
+			 String nombjefeVentas,
+			 String apelljefeVentas,
+			 String dnijefeVentas,
+			 String areajefeVentas,
+			TipoJefeVentas tipojefeventas) {
 		super();
-		this.idPet = idPet;
-		this.namePet = namePet;
-		this.birthDatePet = birthDatePet;
-		this.race = race;
-		this.dueno = dueno;
+		this.idjefeVentas = idjefeVentas;
+		this.nombjefeVentas = nombjefeVentas;
+		this.apelljefeVentas = apelljefeVentas;
+		this.dnijefeVentas = dnijefeVentas;
+		this.areajefeVentas = areajefeVentas;
+		this.tipojefeventas = tipojefeventas;
 	}
 
-	public int getIdPet() {
-		return idPet;
+
+	public int getIdjefeVentas() {
+		return idjefeVentas;
 	}
 
-	public void setIdPet(int idPet) {
-		this.idPet = idPet;
+
+	public void setIdjefeVentas(int idjefeVentas) {
+		this.idjefeVentas = idjefeVentas;
 	}
 
-	public String getNamePet() {
-		return namePet;
+
+	public String getNombjefeVentas() {
+		return nombjefeVentas;
 	}
 
-	public void setNamePet(String namePet) {
-		this.namePet = namePet;
+
+	public void setNombjefeVentas(String nombjefeVentas) {
+		this.nombjefeVentas = nombjefeVentas;
 	}
 
-	public Date getBirthDatePet() {
-		return birthDatePet;
+
+	public String getApelljefeVentas() {
+		return apelljefeVentas;
 	}
 
-	public void setBirthDatePet(Date birthDatePet) {
-		this.birthDatePet = birthDatePet;
+
+	public void setApelljefeVentas(String apelljefeVentas) {
+		this.apelljefeVentas = apelljefeVentas;
 	}
 
-	public Race getRace() {
-		return race;
+
+	public String getDnijefeVentas() {
+		return dnijefeVentas;
 	}
 
-	public void setRace(Race race) {
-		this.race = race;
+
+	public void setDnijefeVentas(String dnijefeVentas) {
+		this.dnijefeVentas = dnijefeVentas;
 	}
 
-	public Dueno getDueno() {
-		return dueno;
+
+	public String getAreajefeVentas() {
+		return areajefeVentas;
 	}
 
-	public void setDueno(Dueno dueno) {
-		this.dueno = dueno;
+
+	public void setAreajefeVentas(String areajefeVentas) {
+		this.areajefeVentas = areajefeVentas;
 	}
+
+
+	public TipoJefeVentas getTipojefeventas() {
+		return tipojefeventas;
+	}
+
+
+	public void setTipojefeventas(TipoJefeVentas tipojefeventas) {
+		this.tipojefeventas = tipojefeventas;
+	}
+
+	
+
+	
 	
 }
