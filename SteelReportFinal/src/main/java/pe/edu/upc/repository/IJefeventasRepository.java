@@ -17,7 +17,5 @@ public interface IJefeventasRepository extends JpaRepository<Jefeventas, Integer
 	
 	@Query("from Jefeventas j where j.tipojefeventas.nombreTipo like %:nombreTipo%")
 	List<Jefeventas> buscarTipo(@Param("nombreTipo") String nombreTipo);	
-	
-	
-	
+		
 }
