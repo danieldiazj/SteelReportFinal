@@ -17,48 +17,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pe.edu.upc.service.ITipoJefeVentasService;
-import pe.edu.upc.service.IjefeVentasService;
+import pe.edu.upc.service.ITipojefeventasService;
+import pe.edu.upc.service.IJefeventasService;
 
-import pe.edu.upc.model.TipoJefeVentas;
-import pe.edu.upc.model.jefeVentas;
+import pe.edu.upc.model.Tipojefeventas;
+import pe.edu.upc.model.Jefeventas;
 
 @Controller
 @RequestMapping("/jefeventas")
-public class jefeVentasController {
+public class JefeventasController {
 
 	@Autowired
-	private ITipoJefeVentasService tService;
+	private ITipojefeventasService tService;
 	
 	@Autowired
-	private IjefeVentasService jService;	
+	private IJefeventasService jService;	
 	
 	@RequestMapping("/")
-	public String irjefeVentas(Map<String, Object> model) {
-		model.put("listajefeVentas", jService.listar());
-		return "listjefeVentas";
+	public String irJefeventas(Map<String, Object> model) {
+		model.put("listaJefeventas", jService.listar());
+		return "listJefeventas";
 	}
 	
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) 
 	{
 
-		model.addAttribute("listaTiposJefeVentas", tService.listar());
-		model.addAttribute("tipojefe", new TipoJefeVentas());
-		model.addAttribute("jefeventas", new jefeVentas());
+		model.addAttribute("listaTiposjefeventas", tService.listar());
+		model.addAttribute("tipojefe", new Tipojefeventas());
+		model.addAttribute("jefeventas", new Jefeventas());
 		return "jefeventas";		
 	}
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid jefeVentas objjefeVentas, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute @Valid Jefeventas objJefeventas, BindingResult binRes, Model model)
 			throws ParseException
 	{
 		if (binRes.hasErrors()) {
-			model.addAttribute("listaTiposJefeVentas", tService.listar());			
+			model.addAttribute("listaTiposjefeventas", tService.listar());			
 			return "jefeventas";
 		}
 		else {
-				boolean flag = jService.insertar(objjefeVentas);
+				boolean flag = jService.insertar(objJefeventas);
 				if (flag) {
 					return "redirect:/jefeventas/listar";
 				}
@@ -70,14 +70,14 @@ public class jefeVentasController {
 	}
 	
 	@RequestMapping("/actualizar")
-	public String actualizar(@ModelAttribute @Valid jefeVentas objjefeVentas, BindingResult binRes, Model model,
+	public String actualizar(@ModelAttribute @Valid Jefeventas objJefeventas, BindingResult binRes, Model model,
 			RedirectAttributes objRedir) throws ParseException
 	{
 		if (binRes.hasErrors()) {
 			return "redirect:/jefeventas/listar";
 		}
 		else {
-			boolean flag = jService.modificar(objjefeVentas);
+			boolean flag = jService.modificar(objJefeventas);
 			if (flag) {
 				objRedir.addFlashAttribute("mensaje", "Se actualizo correctamente");
 				return "redirect:/jefeventas/listar";
@@ -93,17 +93,17 @@ public class jefeVentasController {
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
 			throws ParseException 
 	{
-		Optional<jefeVentas> objjefeVentas = jService.listarId(id);
-		if (objjefeVentas == null) {
+		Optional<Jefeventas> objJefeventas = jService.listarId(id);
+		if (objJefeventas == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche");
 			return "redirect:/jefeventas/listar";
 		}
 		else {
 		
-			model.addAttribute("listaTiposJefeVentas", tService.listar());		
+			model.addAttribute("listaTiposjefeventas", tService.listar());		
 			
-			if (objjefeVentas.isPresent())
-				objjefeVentas.ifPresent(o -> model.addAttribute("jefeventas", o));						
+			if (objJefeventas.isPresent())
+				objJefeventas.ifPresent(o -> model.addAttribute("jefeventas", o));						
 			return "jefeventas";
 		}
 	}
@@ -114,51 +114,51 @@ public class jefeVentasController {
 		try {
 			if (id!=null && id > 0) {
 				jService.eliminar(id);
-				model.put("listajefeVentas", jService.listar());
+				model.put("listaJefeventas", jService.listar());
 			}			
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un roche");
-			model.put("listajefeVentas", jService.listar());
+			model.put("listaJefeventas", jService.listar());
 		}
-		return "listjefeVentas";
+		return "listJefeventas";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-		model.put("listajefeVentas", jService.listar());
-		return "listjefeVentas";
+		model.put("listaJefeventas", jService.listar());
+		return "listJefeventas";
 	}
 	
 	
 	
 	@RequestMapping("/listarId")
-	public String listarId(Map<String, Object> model, @ModelAttribute jefeVentas jefeventas) 
+	public String listarId(Map<String, Object> model, @ModelAttribute Jefeventas jefeventas) 
 	throws ParseException
 	{
-		jService.listarId(jefeventas.getIdjefeVentas());
-		return "listjefeVentas";
+		jService.listarId(jefeventas.getIdJefeventas());
+		return "listJefeventas";
 	}
 	
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute jefeVentas jefeventas) 
+	public String buscar(Map<String, Object> model, @ModelAttribute Jefeventas jefeventas) 
 			throws ParseException
 	{
-		List<jefeVentas> listajefeVentas;
-		jefeventas.setNombjefeVentas(jefeventas.getNombjefeVentas());
-		listajefeVentas = jService.buscarNombre(jefeventas.getNombjefeVentas());
+		List<Jefeventas> listaJefeventas;
+		jefeventas.setNombJefeventas(jefeventas.getNombJefeventas());
+		listaJefeventas = jService.buscarNombre(jefeventas.getNombJefeventas());
 		
-		if (listajefeVentas.isEmpty()) {
+		if (listaJefeventas.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
-		model.put("listajefeVentas", listajefeVentas);
+		model.put("listaJefeventas", listaJefeventas);
 		return "buscar";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
-		model.addAttribute("jefeventas", new jefeVentas());
+		model.addAttribute("jefeventas", new Jefeventas());
 		return "buscar";
 	}
 		
