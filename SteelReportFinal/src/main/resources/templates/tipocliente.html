@@ -27,15 +27,15 @@
 				<div class="form-group">
 					
 					<label for="idtipocliente">ID:</label> 
-					<input type="text" class="form-control" th:field="*{idtipoCliente}"></input>
+					<input type="text" class="form-control" th:field="*{idTipocliente}"></input>
 
 					<div class="form-group">
 						
 						<label for="nombre">NOMBRE:</label> 
-						<input type="text" th:field="*{nombtipoCliente}" class="form-control" id="nombre"></input>
+						<input type="text" th:field="*{nombTipocliente}" class="form-control" id="nombre"></input>
 						
-						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nombtipoCliente')}" 
-								th:errors="*{nombtipoCliente}">
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nombTipocliente')}" 
+								th:errors="*{nombTipocliente}">
 						</div>
 						
 					</div>
