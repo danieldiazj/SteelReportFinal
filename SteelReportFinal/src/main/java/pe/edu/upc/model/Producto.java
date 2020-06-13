@@ -12,8 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="producto")
-public class producto implements Serializable {
+@Table(name="Producto")
+public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -31,20 +31,20 @@ public class producto implements Serializable {
 	@Column(name="nomProducto", nullable = false, length=60)
 	private String nomProducto;
 	
-	
+	//LE C AMBIOE LE NOMBRE A LA TABLA NOMA
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
 	@Column(name="stockProducto", nullable = false, length=60)
 	private String stockProducto;
 
 
-	public producto() {
+	public Producto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public producto(int idProducto,
+	public Producto(int idProducto,
 			 String medidProducto,
 			 String nomProducto,
 			 String stockProducto) {
