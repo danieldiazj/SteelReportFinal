@@ -54,11 +54,11 @@
 							</thead>
 							
 							<tbody>
-								<tr th:each="tipfv: ${listatiposCliente}">
-									<td th:text="${tipfv.idtipoCliente}"></td>
-									<td th:text="${tipfv.nombtipoCliente}"></td>
-									<td><a th:href="@{/tipocliente/eliminar?id=}+${tipfv.idtipoCliente}">Eliminar</a></td>
-									<td><a th:href="@{'/tipocliente/modificar/' + ${tipfv.idtipoCliente}}">Modificar</a></td>
+								<tr th:each="tipcli: ${listatiposCliente}">
+									<td th:text="${tipcli.idtipoCliente}"></td>
+									<td th:text="${tipcli.nombtipoCliente}"></td>
+									<td><a th:href="@{/tipocliente/eliminar?id=}+${tipcli.idtipoCliente}">Eliminar</a></td>
+									<td><a th:href="@{'/tipocliente/modificar/' + ${tipcli.idtipoCliente}}">Modificar</a></td>
 								</tr>
 							</tbody>
 							
