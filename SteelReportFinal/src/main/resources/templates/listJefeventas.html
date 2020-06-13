@@ -47,20 +47,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="j: ${listajefeVentas}">
+							<tr th:each="j: ${listaJefeventas}">
 							<!-- th:text muestra una linea de texto -->
-								<td th:text="${j.idjefeVentas}"></td>
-								<td th:text="${j.nombjefeVentas}"></td>
-								<td th:text="${j.apelljefeVentas}"></td>
+								<td th:text="${j.idJefeventas}"></td>
+								<td th:text="${j.nombJefeventas}"></td>
+								<td th:text="${j.apellJefeventas}"></td>
 								<td th:text="${j.tipojefeventas.nombreTipo}"></td>
-								<td th:text="${j.dnijefeVentas}"></td>
-								<td th:text="${j.areajefeVentas}"></td>
+								<td th:text="${j.dniJefeventas}"></td>
+								<td th:text="${j.areaJefeventas}"></td>
 								
 							
 								
 								<!-- th:href Redirecciona -->
-								<td><a th:href="@{/jefeventas/eliminar?id=}+${j.idjefeVentas}">Eliminar</a></td>
-								<td><a th:href="@{'/jefeventas/modificar/' + ${j.idjefeVentas}}">Modificar</a></td>
+								<td><a th:href="@{/jefeventas/eliminar?id=}+${j.idJefeventas}">Eliminar</a></td>
+								<td><a th:href="@{'/jefeventas/modificar/' + ${j.idJefeventas}}">Modificar</a></td>
 
 
 							</tr>
