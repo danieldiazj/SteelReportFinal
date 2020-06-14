@@ -36,10 +36,36 @@
 				<div class="form-group">
 					<label for="cantidad">CANTIDAD:</label> <input type="text"
 						th:field="*{cantiDetallecompra}" class="form-control" id="cantidad"></input>
-						<!-- th:if Para establecer condiciones, las variables solo son booleanas -->
-						<!-- #{} Expresion de mensaje -->
+						
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('cantiDetallecompra')}" th:errors="*{cantiDetallecompra}"></div>
+						
+						
+						
+						<label for="DESCRIPCION">DESCRIPCION:</label> <input type="text"
+						th:field="*{descriDetallecompra}" class="form-control" id="DESCRIPCION"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('descriDetallecompra')}" th:errors="*{descriDetallecompra}">
+						</div>
+						
+						
+						<label for="precio">PRECIO UNITARIO:</label> <input type="text"
+						th:field="*{preciouDetallecompra}" class="form-control" id="precio"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('preciouDetallecompra')}" th:errors="*{preciouDetallecompra}">
+						</div>
+						
+						
+						
+						<label for="total">TOTAL:</label> <input type="text"
+						th:field="*{totalDetallecompra}" class="form-control" id="total"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('totalDetallecompra')}" th:errors="*{totalDetallecompra}">
+						</div>
+						
 
 					
 						
