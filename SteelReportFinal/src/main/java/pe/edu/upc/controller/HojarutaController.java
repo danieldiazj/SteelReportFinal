@@ -57,7 +57,7 @@ public class HojarutaController {
 	{
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaJefeventas", jeService.listar());			
-			return "Hojaruta";
+			return "hojaruta";
 		}
 		else {
 				boolean flag = hService.insertar(objHojaruta);

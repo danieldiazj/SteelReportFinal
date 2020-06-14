@@ -68,10 +68,10 @@ public class Hojaruta implements Serializable {
 
 
 	public Hojaruta(int idHojaruta, Jefeventas jefeventas,
-			@NotNull @Past(message = "No puedes seleccionar un dia que NO existe") Date fecDateHojaruta,
-			@NotEmpty(message = "No puede estar vacio") @NotBlank(message = "No puede estar en blanco") String descrHojaruta,
-			@NotEmpty(message = "No puede estar vacio") @NotBlank(message = "No puede estar en blanco") String presuHojaruta,
-			@NotEmpty(message = "No puede estar vacio") @NotBlank(message = "No puede estar en blanco") String obsHojaruta) {
+			 Date fecDateHojaruta,
+			 String descrHojaruta,
+			 String presuHojaruta,
+			 String obsHojaruta) {
 		super();
 		this.idHojaruta = idHojaruta;
 		this.jefeventas = jefeventas;
