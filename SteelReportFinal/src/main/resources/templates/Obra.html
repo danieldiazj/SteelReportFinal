@@ -43,10 +43,10 @@
 						
 					<label for="cliente" class=" col-sm-2 col-form-label">Cliente: </label>
 				<select
-						class="form-control" th:field="*{obra.idObra}">
-						<option th:each="c: ${listaObras}" th:value="${c.idObra}"
+						class="form-control" th:field="*{cliente.idCliente}">
+						<option th:each="c: ${listaClientes}" th:value="${c.idCliente}"
 							th:text="${c.nombreCliente}"
-							th:selected="(${c.idObra} == *{obra.idObra})"></option>
+							th:selected="(${c.idCliente} == *{cliente.idCliente})"></option>
 					</select>
 					
 					
