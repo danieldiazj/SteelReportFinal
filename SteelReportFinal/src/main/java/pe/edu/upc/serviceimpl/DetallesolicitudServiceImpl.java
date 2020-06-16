@@ -15,12 +15,12 @@ import pe.edu.upc.service.IDetallesolicitudService;
 public class DetallesolicitudServiceImpl implements IDetallesolicitudService {
 
 	@Autowired
-	private IDetallesolicitudRepository dDetallesolicitud;
+	private IDetallesolicitudRepository deDetallesolicitud;
 	
 	@Override
 	@Transactional
 	public boolean insertar(Detallesolicitud detallesolicitud) {
-		Detallesolicitud objDetallesolicitud = dDetallesolicitud.save(detallesolicitud);
+		Detallesolicitud objDetallesolicitud = deDetallesolicitud.save(detallesolicitud);
 		if (objDetallesolicitud == null)
 			return false;
 		else 
@@ -32,7 +32,7 @@ public class DetallesolicitudServiceImpl implements IDetallesolicitudService {
 	public boolean modificar(Detallesolicitud detallesolicitud) {
 		boolean flag = false;
 		try {
-			dDetallesolicitud.save(detallesolicitud);
+			deDetallesolicitud.save(detallesolicitud);
 			flag = true;
 		}
 		catch(Exception ex) {
@@ -44,43 +44,43 @@ public class DetallesolicitudServiceImpl implements IDetallesolicitudService {
 	@Override
 	@Transactional
 	public void eliminar(int idDetallesolicitud) {
-		dDetallesolicitud.deleteById(idDetallesolicitud);		
+		deDetallesolicitud.deleteById(idDetallesolicitud);		
 	}
 	
 	@Override
 	@Transactional(readOnly=true)
 	public Optional<Detallesolicitud> buscarId(int idDetallesolicitud) {
-		return dDetallesolicitud.findById(idDetallesolicitud);
+		return deDetallesolicitud.findById(idDetallesolicitud);
 	}	
 
 	@Override
 	@Transactional(readOnly=true)
 	public Optional<Detallesolicitud> listarId(int idDetallesolicitud) {
-		return dDetallesolicitud.findById(idDetallesolicitud);
+		return deDetallesolicitud.findById(idDetallesolicitud);
 	}
 
 	@Override
 	@Transactional
 	public List<Detallesolicitud> listar() {
-		return dDetallesolicitud.findAll();
+		return deDetallesolicitud.findAll();
 	}
 
 	@Override
 	@Transactional
 	public List<Detallesolicitud> buscarCantidad(String cantiDetallesolicitud) {
-		return dDetallesolicitud.buscarCantidad(cantiDetallesolicitud);
+		return deDetallesolicitud.buscarCantidad(cantiDetallesolicitud);
 	}
 	
 	@Override
 	@Transactional
 	public List<Detallesolicitud> buscarProducto(String nomProducto) {
-		return dDetallesolicitud.buscarProducto(nomProducto);
+		return deDetallesolicitud.buscarProducto(nomProducto);
 	}
 	
 	@Override
 	@Transactional
 	public List<Detallesolicitud> buscarSolicitudcompra(int idSolicitudcompra) {
-		return dDetallesolicitud.buscarSolicitudcompra(idSolicitudcompra);
+		return deDetallesolicitud.buscarSolicitudcompra(idSolicitudcompra);
 	}
 
 	

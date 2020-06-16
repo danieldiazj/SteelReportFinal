@@ -35,7 +35,7 @@ public class Detallesolicitud implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="idSolicitudcompra", nullable=false)
-	private Ordencompra solicitudcompra;
+	private Solicitudcompra solicitudcompra;
 
 	@ManyToOne
 	@JoinColumn(name="idProducto", nullable=false)
@@ -46,7 +46,13 @@ public class Detallesolicitud implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Detallesolicitud(int idDetallesolicitud, String cantiDetallesolicitud,Ordencompra solicitudcompra, Producto producto) {
+	
+
+
+
+
+
+	public Detallesolicitud(int idDetallesolicitud, String cantiDetallesolicitud,Solicitudcompra solicitudcompra, Producto producto) {
 		super();
 		this.idDetallesolicitud = idDetallesolicitud;
 		this.cantiDetallesolicitud = cantiDetallesolicitud;
@@ -54,37 +60,91 @@ public class Detallesolicitud implements Serializable {
 		this.producto = producto;
 	}
 
+
+
+
+
+
+
 	public int getIdDetallesolicitud() {
 		return idDetallesolicitud;
 	}
+
+
+
+
+
+
 
 	public void setIdDetallesolicitud(int idDetallesolicitud) {
 		this.idDetallesolicitud = idDetallesolicitud;
 	}
 
+
+
+
+
+
+
 	public String getCantiDetallesolicitud() {
 		return cantiDetallesolicitud;
 	}
+
+
+
+
+
+
 
 	public void setCantiDetallesolicitud(String cantiDetallesolicitud) {
 		this.cantiDetallesolicitud = cantiDetallesolicitud;
 	}
 
-	public Ordencompra getSolicitudcompra() {
+
+
+
+
+
+
+	public Solicitudcompra getSolicitudcompra() {
 		return solicitudcompra;
 	}
 
-	public void setSolicitudcompra(Ordencompra solicitudcompra) {
+
+
+
+
+
+
+	public void setSolicitudcompra(Solicitudcompra solicitudcompra) {
 		this.solicitudcompra = solicitudcompra;
 	}
+
+
+
+
+
+
 
 	public Producto getProducto() {
 		return producto;
 	}
 
+
+
+
+
+
+
 	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
+
+
+
+
+
+
 
 	
 }

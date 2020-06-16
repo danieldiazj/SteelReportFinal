@@ -30,7 +30,7 @@ import pe.edu.upc.model.Detallesolicitud;
 public class DetallesolicitudController {
 
 	@Autowired
-	private ISolicitudcompraService oService;
+	private ISolicitudcompraService sService;
 	@Autowired
 	private IProductoService ptService;
 	@Autowired
@@ -46,7 +46,7 @@ public class DetallesolicitudController {
 	public String irRegistrar(Model model) 
 	{
 		model.addAttribute("listaProductos", ptService.listar());
-		model.addAttribute("listaSolicitudcompra", oService.listar());
+		model.addAttribute("listaSolicitudcompra", sService.listar());
 		model.addAttribute("producto", new Producto());
 		model.addAttribute("solicitudcompra", new Solicitudcompra());
 		model.addAttribute("detallesolicitud", new Detallesolicitud());
@@ -59,7 +59,7 @@ public class DetallesolicitudController {
 	{
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaProductos", ptService.listar());
-			model.addAttribute("listaSolicitudcompra", oService.listar());			
+			model.addAttribute("listaSolicitudcompra", sService.listar());			
 			return "detallesolicitud";
 		}
 		else {
@@ -105,7 +105,7 @@ public class DetallesolicitudController {
 		}
 		else {
 			model.addAttribute("listaProductos", ptService.listar());
-			model.addAttribute("listaSolicitudcompra", oService.listar());		
+			model.addAttribute("listaSolicitudcompra", sService.listar());		
 			
 			if (objDetallesolicitud.isPresent())
 				objDetallesolicitud.ifPresent(o -> model.addAttribute("detallesolicitud", o));						
