@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Detalle despacho</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+	<!-- Los fragment se insertan ya sea con th:include o th:replace -->
+	<!-- th:include simplemente se inserta dentro del espacio asignado -->
+	<!-- th:replace remplaza todo el espacio asignado por el fragment correspondiente -->
+	<!-- sintaxis th:include/replace="rutafragment :: Nombre del fragment -->
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		
+		<form th:action="@{/detalledespacho/registrar}" method="post" th:object="${detalledespacho}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			
+				<label for="iddetalledespacho">ID:</label> <input type="text"
+					class="form-control" th:field="*{idDetalledespacho}"></input>
+
+				<div class="form-group">
+					<label for="nombre">NOMBRE:</label> <input type="text"
+						th:field="*{nombdDespacho}" class="form-control" id="nombre"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nombdDespacho')}" th:errors="*{nombdDespacho}">
+						</div>
+						
+						
+<!--  no me sale esta mierda csm -->
+						
+					<label for="producto" class=" col-sm-2 col-form-label">Producto: </label>
+				<select
+						class="form-control" th:field="*{producto.idProducto}">
+						<option th:each="tc: ${listaProductos}" th:value="${tc.idProducto}"
+							th:text="${tc.nomProducto}"
+							th:selected="(${tc.idProducto} == *{producto.idProducto})"></option>
+					</select>
+					
+					<label for="ordendespacho" class=" col-sm-2 col-form-label">Orden despacho: </label>
+				<select
+						class="form-control" th:field="*{ordendespacho.idOrdendespacho}">
+						<option th:each="j: ${listaOrdendespacho}" th:value="${j.idOrdendespacho}"
+							th:text="${j.idOrdendespacho}"
+							th:selected="(${j.idOrdendespacho} == *{ordendespacho.idOrdendespacho})"></option>
+					</select>
+					
+					
+					<div class="form-group">
+						
+						<label for="lugar">Lugar:</label> 
+						<input type="text" th:field="*{lugardDespacho}" class="form-control" id="lugar"></input>
+						
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('lugardDespacho')}" 
+								th:errors="*{lugardDespacho}">
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						
+						<label for="cantidad">Cantidad:</label> 
+						<input type="text" th:field="*{cantidaddDespacho}" class="form-control" id="cantidad"></input>
+						
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('cantidaddDespacho')}" 
+								th:errors="*{cantidaddDespacho}">
+						</div>
+						
+					</div>		
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/detalledespacho/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
