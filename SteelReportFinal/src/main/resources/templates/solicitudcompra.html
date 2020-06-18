@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Solicitud compra</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+	<!-- Los fragment se insertan ya sea con th:include o th:replace -->
+	<!-- th:include simplemente se inserta dentro del espacio asignado -->
+	<!-- th:replace remplaza todo el espacio asignado por el fragment correspondiente -->
+	<!-- sintaxis th:include/replace="rutafragment :: Nombre del fragment -->
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		
+		<form th:action="@{/solicitudcompra/registrar}" method="post" th:object="${solicitudcompra}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			
+				<label for="idsolicitudcompra">ID:</label> <input type="text"
+					class="form-control" th:field="*{idSolicitudcompra}"></input>
+					
+
+			 	<div class="form-group">
+					
+						
+						
+<!--  no me sale esta mierda csm -->
+						
+					<label for="cliente" class=" col-sm-2 col-form-label">Cliente: </label>
+				<select
+						class="form-control" th:field="*{cliente.idCliente}">
+						<option th:each="c: ${listaClientes}" th:value="${c.idCliente}"
+							th:text="${c.nombreCliente}"
+							th:selected="(${c.idCliente} == *{cliente.idCliente})"></option>
+					</select>
+					
+					
+					
+					
+					
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/solicitudcompra/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
