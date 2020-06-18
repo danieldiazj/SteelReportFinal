@@ -35,7 +35,7 @@ public class Hojaruta implements Serializable {
 
 	
 	@NotNull
-	@Past(message="No puedes seleccionar un dia que NO existe")
+	//@Past(message="No puedes seleccionar un dia que NO existe")
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecDateHojaruta")
 	@DateTimeFormat(pattern="yyyy-MM-dd")

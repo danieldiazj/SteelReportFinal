@@ -38,7 +38,7 @@ public class Jefeventas implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="dniJefeventas", nullable = false, length=60)
+	@Column(name="dniJefeventas", nullable = false, length=8)
 	private String dniJefeventas;
 	
 	@NotEmpty(message="No puede estar vacio")

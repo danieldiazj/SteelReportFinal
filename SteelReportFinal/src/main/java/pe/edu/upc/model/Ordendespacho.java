@@ -36,7 +36,7 @@ public class Ordendespacho implements Serializable {
 	
 	
 	@NotNull
-	@Past(message="No puedes seleccionar un dia que NO existe")
+	//@Past(message="No puedes seleccionar un dia que NO existe")
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecDateOrdendespacho")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
