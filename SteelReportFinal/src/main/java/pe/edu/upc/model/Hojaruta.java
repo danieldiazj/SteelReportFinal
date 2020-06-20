@@ -16,62 +16,50 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="Hojaruta")
+@Table(name = "Hojaruta")
 public class Hojaruta implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idHojaruta;
-	
+
 	@ManyToOne
-	@JoinColumn(name="idJefeventas", nullable=false)
+	@JoinColumn(name = "idJefeventas", nullable = false)
 	private Jefeventas jefeventas;
 
-	
 	@NotNull
-	//@Past(message="No puedes seleccionar un dia que NO existe")
+	// @Past(message="No puedes seleccionar un dia que NO existe")
 	@Temporal(TemporalType.DATE)
-	@Column(name="fecDateHojaruta")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name = "fecDateHojaruta")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fecDateHojaruta;
-	
-	
-	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="descrHojaruta", nullable = false, length=90)
-	private String descrHojaruta;
-	
-	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="presuHojaruta", nullable = false, length=90)
-	private String presuHojaruta;
-	
-	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="obsHojaruta", nullable = false, length=90)
-	private String obsHojaruta;
 
+	@NotEmpty(message = "No puede estar vacio")
+	@NotBlank(message = "No puede estar en blanco")
+	@Column(name = "descrHojaruta", nullable = false, length = 90)
+	private String descrHojaruta;
+
+	@NotEmpty(message = "No puede estar vacio")
+	@NotBlank(message = "No puede estar en blanco")
+	@Column(name = "presuHojaruta", nullable = false, length = 90)
+	private String presuHojaruta;
+
+	@NotEmpty(message = "No puede estar vacio")
+	@NotBlank(message = "No puede estar en blanco")
+	@Column(name = "obsHojaruta", nullable = false, length = 90)
+	private String obsHojaruta;
 
 	public Hojaruta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Hojaruta(int idHojaruta, Jefeventas jefeventas,
-			 Date fecDateHojaruta,
-			 String descrHojaruta,
-			 String presuHojaruta,
-			 String obsHojaruta) {
+	public Hojaruta(int idHojaruta, Jefeventas jefeventas, Date fecDateHojaruta, String descrHojaruta,
+			String presuHojaruta, String obsHojaruta) {
 		super();
 		this.idHojaruta = idHojaruta;
 		this.jefeventas = jefeventas;
@@ -81,67 +69,52 @@ public class Hojaruta implements Serializable {
 		this.obsHojaruta = obsHojaruta;
 	}
 
-
+	//daniel es tio pio
 	public int getIdHojaruta() {
 		return idHojaruta;
 	}
-
 
 	public void setIdHojaruta(int idHojaruta) {
 		this.idHojaruta = idHojaruta;
 	}
 
-
 	public Jefeventas getJefeventas() {
 		return jefeventas;
 	}
-
 
 	public void setJefeventas(Jefeventas jefeventas) {
 		this.jefeventas = jefeventas;
 	}
 
-
 	public Date getFecDateHojaruta() {
 		return fecDateHojaruta;
 	}
-
 
 	public void setFecDateHojaruta(Date fecDateHojaruta) {
 		this.fecDateHojaruta = fecDateHojaruta;
 	}
 
-
 	public String getDescrHojaruta() {
 		return descrHojaruta;
 	}
-
 
 	public void setDescrHojaruta(String descrHojaruta) {
 		this.descrHojaruta = descrHojaruta;
 	}
 
-
 	public String getPresuHojaruta() {
 		return presuHojaruta;
 	}
-
 
 	public void setPresuHojaruta(String presuHojaruta) {
 		this.presuHojaruta = presuHojaruta;
 	}
 
-
 	public String getObsHojaruta() {
 		return obsHojaruta;
 	}
 
-
 	public void setObsHojaruta(String obsHojaruta) {
 		this.obsHojaruta = obsHojaruta;
 	}
-	
-	
-	
-	
 }
