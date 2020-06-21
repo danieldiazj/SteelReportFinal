@@ -22,7 +22,7 @@ public class Producto implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="medidProducto", nullable = false, length=60)
+	@Column(name="medidProducto", nullable = false, length=60)//cambio a int o float??
 	private String medidProducto;
 	
 	
@@ -34,7 +34,7 @@ public class Producto implements Serializable {
 	//LE C AMBIOE LE NOMBRE A LA TABLA NOMA
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="stockProducto", nullable = false, length=60)
+	@Column(name="stockProducto", nullable = false, length=60) //cambio a int
 	private String stockProducto;
 
 
