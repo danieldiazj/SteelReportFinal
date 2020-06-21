@@ -21,7 +21,7 @@ public class Tipocliente implements Serializable {
 	private int idTipocliente;
 	
 	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
+	@NotBlank(message="No puede estar vacio")
 	@Column(name="nombTipocliente", nullable = false, length=60)
 	private String nombTipocliente;
 
@@ -30,7 +30,7 @@ public class Tipocliente implements Serializable {
 	}
 
 	public Tipocliente(int idTipocliente,
-			@NotEmpty(message = "No puede estar vacio") @NotBlank(message = "No puede estar en blanco") String nombTipocliente) {
+			@NotEmpty(message = "No puede estar vacio") @NotBlank(message = "No puede estar vacio") String nombTipocliente) {
 		super();
 		this.idTipocliente = idTipocliente;
 		this.nombTipocliente = nombTipocliente;
