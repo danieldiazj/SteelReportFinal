@@ -26,19 +26,19 @@ public class Obra implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nombreObra", nullable = false, length=60)
+	@Column(name="nombreObra", nullable = false, length=60, unique= true) //las obras siempre tienen distintos nombres
 	private String nombreObra;
 	
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
 	@Column(name="responsableObra", nullable = false, length=60)
-	private String responsableObra;
+	private String responsableObra; 
 	
 
 	@ManyToOne
 	@JoinColumn(name="idCliente", nullable=false)
-	private Cliente cliente;
+	private Cliente cliente; 
 
 
 
