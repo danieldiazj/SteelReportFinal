@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="Producto")
@@ -34,8 +36,9 @@ public class Producto implements Serializable {
 	//LE C AMBIOE LE NOMBRE A LA TABLA NOMA
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="stockProducto", nullable = false, length=60) //cambio a int
-	private String stockProducto;
+	@Size(min=0, max=999999)
+	@Column(name="stockProducto", nullable = false) //cambio a int
+	private int stockProducto;
 
 
 	public Producto() {
@@ -44,16 +47,22 @@ public class Producto implements Serializable {
 	}
 
 
+	
+
+
 	public Producto(int idProducto,
 			 String medidProducto,
 			 String nomProducto,
-			 String stockProducto) {
+			 int stockProducto) {
 		super();
 		this.idProducto = idProducto;
 		this.medidProducto = medidProducto;
 		this.nomProducto = nomProducto;
 		this.stockProducto = stockProducto;
 	}
+
+
+
 
 
 	public int getIdProducto() {
@@ -86,14 +95,22 @@ public class Producto implements Serializable {
 	}
 
 
-	public String getStockProducto() {
+
+
+
+	public int getStockProducto() {
 		return stockProducto;
 	}
 
 
-	public void setStockProducto(String stockProducto) {
+
+
+
+	public void setStockProducto(int stockProducto) {
 		this.stockProducto = stockProducto;
 	}
+
+
 	
 	
 
