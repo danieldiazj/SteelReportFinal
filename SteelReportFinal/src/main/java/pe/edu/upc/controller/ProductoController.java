@@ -21,6 +21,8 @@ import pe.edu.upc.service.IProductoService;
 
 import pe.edu.upc.model.Producto;
 
+
+ //prueba
 @Controller
 @RequestMapping("/producto")
 public class ProductoController {
