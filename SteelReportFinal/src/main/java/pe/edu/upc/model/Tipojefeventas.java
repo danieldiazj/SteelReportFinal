@@ -22,7 +22,7 @@ public class Tipojefeventas implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nombreTipo", nullable = false, length=60)
+	@Column(name="nombreTipo", nullable = false, length=60, unique=true)
 	private String nombreTipo;
 
 	public Tipojefeventas() {
