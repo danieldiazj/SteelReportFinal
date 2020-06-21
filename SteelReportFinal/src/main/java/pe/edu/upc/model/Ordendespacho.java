@@ -13,10 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.Future;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,7 +35,7 @@ public class Ordendespacho implements Serializable {
 	
 	
 	@NotNull
-	//@Past(message="No puedes seleccionar un dia que NO existe")
+	@Future(message="No puedes seleccionar un dia que NO existe")
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecDateOrdendespacho")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
