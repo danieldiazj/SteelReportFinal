@@ -65,11 +65,7 @@ public class DetallesolicitudServiceImpl implements IDetallesolicitudService {
 		return deDetallesolicitud.findAll();
 	}
 
-	@Override
-	@Transactional
-	public List<Detallesolicitud> buscarCantidad(String cantiDetallesolicitud) {
-		return deDetallesolicitud.buscarCantidad(cantiDetallesolicitud);
-	}
+	
 	
 	@Override
 	@Transactional
@@ -81,6 +77,12 @@ public class DetallesolicitudServiceImpl implements IDetallesolicitudService {
 	@Transactional
 	public List<Detallesolicitud> buscarSolicitudcompra(int idSolicitudcompra) {
 		return deDetallesolicitud.buscarSolicitudcompra(idSolicitudcompra);
+	}
+
+	@Override
+	@Transactional
+	public List<Detallesolicitud> buscarCantidad(int cantiDetallesolicitud) {
+		return deDetallesolicitud.buscarCantidad(cantiDetallesolicitud);
 	}
 
 	

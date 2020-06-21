@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Range;
+
 
 
 @Entity
@@ -26,11 +28,9 @@ public class Detallesolicitud implements Serializable {
 	private int idDetallesolicitud;
 	
 
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="cantiDetallesolicitud", nullable = false, length=90)
-	private String cantiDetallesolicitud;
-	
+	@Range(min = 1,max =10000,message ="La cantidad debe de estar entre 1 y 10000") 
+	@Column(name="cantiDetallesolicitud", nullable = false)
+	private int cantiDetallesolicitud;
 	
 
 	@ManyToOne
@@ -52,7 +52,7 @@ public class Detallesolicitud implements Serializable {
 
 
 
-	public Detallesolicitud(int idDetallesolicitud, String cantiDetallesolicitud,Solicitudcompra solicitudcompra, Producto producto) {
+	public Detallesolicitud(int idDetallesolicitud, int cantiDetallesolicitud,Solicitudcompra solicitudcompra, Producto producto) {
 		super();
 		this.idDetallesolicitud = idDetallesolicitud;
 		this.cantiDetallesolicitud = cantiDetallesolicitud;
@@ -86,7 +86,7 @@ public class Detallesolicitud implements Serializable {
 
 
 
-	public String getCantiDetallesolicitud() {
+	public int getCantiDetallesolicitud() {
 		return cantiDetallesolicitud;
 	}
 
@@ -96,7 +96,7 @@ public class Detallesolicitud implements Serializable {
 
 
 
-	public void setCantiDetallesolicitud(String cantiDetallesolicitud) {
+	public void setCantiDetallesolicitud(int cantiDetallesolicitud) {
 		this.cantiDetallesolicitud = cantiDetallesolicitud;
 	}
 
@@ -139,8 +139,6 @@ public class Detallesolicitud implements Serializable {
 	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
-
-
 
 
 

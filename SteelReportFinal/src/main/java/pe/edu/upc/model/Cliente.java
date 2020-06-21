@@ -28,14 +28,14 @@ public class Cliente implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Size(min = 3, max = 50, message = "Su nombre debe tener entre 3 a 50 caracteres")
+	@Size(min = 2, max = 50, message = "El nombre debe tener entre 2 a 50 caracteres")
 	@Column(name="nombreCliente", nullable = false)
 	private String nombreCliente;
 	
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Size(min = 3, max = 50,message = "Su apellido debe tener entre 3 a 50 caracteres" )
+	@Size(min = 2, max = 50,message = "El apellido debe tener entre 2 a 50 caracteres" )
 	@Column(name="apellidosCliente", nullable = false)
 	private String apellidosCliente;
 	

@@ -15,7 +15,7 @@ import pe.edu.upc.model.Detallesolicitud;
 @Repository
 public interface IDetallesolicitudRepository extends JpaRepository<Detallesolicitud, Integer>{
 	@Query("from Detallesolicitud de where de.cantiDetallesolicitud like %:cantiDetallesolicitud%")
-	List<Detallesolicitud> buscarCantidad(@Param("cantiDetallesolicitud") String cantiDetallesolicitud);
+	List<Detallesolicitud> buscarCantidad(@Param("cantiDetallesolicitud") int cantiDetallesolicitud);
 	
 	@Query("from Detallesolicitud de where de.solicitudcompra.idSolicitudcompra like %:idSolicitudcompra%")
 	List<Detallesolicitud> buscarSolicitudcompra(@Param("idSolicitudcompra") int idSolicitudcompra);

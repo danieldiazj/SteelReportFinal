@@ -12,7 +12,7 @@ public interface IDetallecompraService {
 	public Optional<Detallecompra> buscarId(int idDetallecompra);
 	public Optional<Detallecompra> listarId(int idDetallecompra);
 	List<Detallecompra> listar();
-	List<Detallecompra> buscarCantidad(String cantiDetallecompra);
+	List<Detallecompra> buscarCantidad(int cantiDetallecompra);
 	List<Detallecompra> buscarProducto(String nomProducto);
 	List<Detallecompra> buscarOrdencompra(int idOrdencompra);
 }

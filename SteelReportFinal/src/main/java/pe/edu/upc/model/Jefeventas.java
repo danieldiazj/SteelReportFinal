@@ -11,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="Jefeventas")
+@Table(name="Jefeventas",uniqueConstraints={@UniqueConstraint(columnNames ={"nombJefeventas","apellJefeventas"})})
 public class Jefeventas implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -26,24 +28,28 @@ public class Jefeventas implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nombJefeventas", nullable = false, length=60)
+	@Size(min = 2, max = 50, message = "El nombre debe tener entre 2 a 50 caracteres")
+	@Column(name="nombJefeventas", nullable = false)
 	private String nombJefeventas;
 	
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="apellJefeventas", nullable = false, length=60)
+	@Size(min = 2, max = 50, message = "El apellido debe tener entre 2 a 50 caracteres")
+	@Column(name="apellJefeventas", nullable = false)
 	private String apellJefeventas;
 	
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="dniJefeventas", nullable = false, length=8)
+	@Pattern(regexp = "[1-9][0-9]{7}",message="El dni que ha ingresado debe tener 8 números")
+	@Column(name="dniJefeventas", nullable = false,unique=true)
 	private String dniJefeventas;
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="areaJefeventas", nullable = false, length=60)
+	@Size(min = 3, max = 50, message = "El area debe tener entre 3 a 50 caracteres")
+	@Column(name="areaJefeventas", nullable = false,unique=true)
 	private String areaJefeventas;
 	
 

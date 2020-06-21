@@ -16,6 +16,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -40,16 +43,17 @@ public class Hojaruta implements Serializable {
 
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "descrHojaruta", nullable = false, length = 90)
+	@Size(min = 5, max = 90, message = "La descripción debe tener entre 5 a 90 caracteres")
+	@Column(name = "descrHojaruta", nullable = false)
 	private String descrHojaruta;
-
-	@NotEmpty(message = "No puede estar vacio")
-	@NotBlank(message = "No puede estar en blanco")
+	
+	@Range(min = 100,max =1000000,message ="La cantidad debe de estar entre 100 y 1000000") 
 	@Column(name = "presuHojaruta", nullable = false, length = 90)
-	private String presuHojaruta;
+	private int presuHojaruta;
 
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
+	@Size(min = 5, max = 90, message = "Las observaciones deben de tener entre 5 a 90 caracteres")
 	@Column(name = "obsHojaruta", nullable = false, length = 90)
 	private String obsHojaruta;
 
@@ -59,7 +63,7 @@ public class Hojaruta implements Serializable {
 	}
 
 	public Hojaruta(int idHojaruta, Jefeventas jefeventas, Date fecDateHojaruta, String descrHojaruta,
-			String presuHojaruta, String obsHojaruta) {
+			int presuHojaruta, String obsHojaruta) {
 		super();
 		this.idHojaruta = idHojaruta;
 		this.jefeventas = jefeventas;
@@ -69,7 +73,6 @@ public class Hojaruta implements Serializable {
 		this.obsHojaruta = obsHojaruta;
 	}
 
-	//daniel es tio pio
 	public int getIdHojaruta() {
 		return idHojaruta;
 	}
@@ -102,11 +105,11 @@ public class Hojaruta implements Serializable {
 		this.descrHojaruta = descrHojaruta;
 	}
 
-	public String getPresuHojaruta() {
+	public int getPresuHojaruta() {
 		return presuHojaruta;
 	}
 
-	public void setPresuHojaruta(String presuHojaruta) {
+	public void setPresuHojaruta(int presuHojaruta) {
 		this.presuHojaruta = presuHojaruta;
 	}
 

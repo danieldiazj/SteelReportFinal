@@ -11,12 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="Obra")
+@Table(name="Obra",uniqueConstraints={@UniqueConstraint(columnNames ={"nombreObra","responsableObra"})})
 public class Obra implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -26,13 +27,15 @@ public class Obra implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nombreObra", nullable = false, length=60, unique= true) //las obras siempre tienen distintos nombres
+	@Size(min = 2, max = 50, message = "La obra debe tener entre 3 a 50 caracteres")
+	@Column(name="nombreObra", nullable = false)
 	private String nombreObra;
 	
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="responsableObra", nullable = false, length=60)
+	@Size(min = 2, max = 50, message = "El responsable debe tener entre 2 a 50 caracteres")
+	@Column(name="responsableObra", nullable = false)
 	private String responsableObra; 
 	
 

@@ -1,7 +1,7 @@
 package pe.edu.upc.model;
 
 import java.io.Serializable;
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,14 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
+
 
 @Entity
 @Table(name="Detallecompra")
@@ -31,24 +30,23 @@ public class Detallecompra implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="descriDetallecompra", nullable = false, length=90)
+	@Size(min = 5, max = 90, message = "La descripcion debe tener entre 5 a 90 caracteres")
+	@Column(name="descriDetallecompra", nullable = false)
 	private String descriDetallecompra;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="cantiDetallecompra", nullable = false, length=90)
-	private String cantiDetallecompra;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="preciouDetallecompra", nullable = false, length=90)
-	private String preciouDetallecompra;
+	@Range(min = 1,max = 10000,message ="La cantidad debe de estar entre 1 y 10000" ) 
+	@Column(name="cantiDetallecompra", nullable = false)
+	private int cantiDetallecompra;
 	
+
+	@Range(min = 1,max =100000,message ="El precio debe de estar entre 1 y 100000") 
+	@Column(name="preciouDetallecompra", nullable = false)
+	private int preciouDetallecompra;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="totalDetallecompra", nullable = false, length=90)
-	private String totalDetallecompra;
+	@Range(min = 1,max = 1000000,message ="El total de detalle debe de estar entre 1 y 1000000") 
+	@Column(name="totalDetallecompra", nullable = false)
+	private int totalDetallecompra;
 	
 
 	@ManyToOne
@@ -66,9 +64,9 @@ public class Detallecompra implements Serializable {
 
 	public Detallecompra(int idDetallecompra,
 			 String descriDetallecompra,
-			 String cantiDetallecompra,
-			 String preciouDetallecompra,
-			 String totalDetallecompra,
+			 int cantiDetallecompra,
+			 int preciouDetallecompra,
+			 int totalDetallecompra,
 			Ordencompra ordencompra, Producto producto) {
 		super();
 		this.idDetallecompra = idDetallecompra;
@@ -96,27 +94,27 @@ public class Detallecompra implements Serializable {
 		this.descriDetallecompra = descriDetallecompra;
 	}
 
-	public String getCantiDetallecompra() {
+	public int getCantiDetallecompra() {
 		return cantiDetallecompra;
 	}
 
-	public void setCantiDetallecompra(String cantiDetallecompra) {
+	public void setCantiDetallecompra(int cantiDetallecompra) {
 		this.cantiDetallecompra = cantiDetallecompra;
 	}
 
-	public String getPreciouDetallecompra() {
+	public int getPreciouDetallecompra() {
 		return preciouDetallecompra;
 	}
 
-	public void setPreciouDetallecompra(String preciouDetallecompra) {
+	public void setPreciouDetallecompra(int preciouDetallecompra) {
 		this.preciouDetallecompra = preciouDetallecompra;
 	}
 
-	public String getTotalDetallecompra() {
+	public int getTotalDetallecompra() {
 		return totalDetallecompra;
 	}
 
-	public void setTotalDetallecompra(String totalDetallecompra) {
+	public void setTotalDetallecompra(int totalDetallecompra) {
 		this.totalDetallecompra = totalDetallecompra;
 	}
 
@@ -135,6 +133,7 @@ public class Detallecompra implements Serializable {
 	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
+
 
 	
 	

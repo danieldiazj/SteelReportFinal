@@ -14,6 +14,9 @@ import javax.persistence.Table;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name="Detalledespacho")
@@ -26,20 +29,20 @@ public class Detalledespacho implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="lugardDespacho", nullable = false, length=90)
+	@Size(min = 2, max = 90, message = "El lugar debe tener entre 2 a 90 caracteres")
+	@Column(name="lugardDespacho", nullable = false)
 	private String lugardDespacho;
 	
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nombdDespacho", nullable = false, length=90)
+	@Size(min = 2, max = 90, message = "El nombre del lugar debe tener entre 2 a 90 caracteres")
+	@Column(name="nombdDespacho", nullable = false)
 	private String nombdDespacho;
 	
-	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="cantidaddDespacho", nullable = false, length=90)
-	private String cantidaddDespacho;
+	@Range(min = 1,max =10000,message ="La cantidad debe de estar entre 1 y 10000") 
+	@Column(name="cantidaddDespacho", nullable = false)
+	private int cantidaddDespacho;
 	
 	@ManyToOne
 	@JoinColumn(name="idProducto", nullable=false)
@@ -57,7 +60,7 @@ public class Detalledespacho implements Serializable {
 	public Detalledespacho(int idDetalledespacho,
 			 String lugardDespacho,
 			 String nombdDespacho,
-			 String cantidaddDespacho,
+			 int cantidaddDespacho,
 			Producto producto, Ordendespacho ordendespacho) {
 		super();
 		this.idDetalledespacho = idDetalledespacho;
@@ -92,11 +95,11 @@ public class Detalledespacho implements Serializable {
 		this.nombdDespacho = nombdDespacho;
 	}
 
-	public String getCantidaddDespacho() {
+	public int getCantidaddDespacho() {
 		return cantidaddDespacho;
 	}
 
-	public void setCantidaddDespacho(String cantidaddDespacho) {
+	public void setCantidaddDespacho(int cantidaddDespacho) {
 		this.cantidaddDespacho = cantidaddDespacho;
 	}
 
@@ -114,10 +117,6 @@ public class Detalledespacho implements Serializable {
 
 	public void setOrdendespacho(Ordendespacho ordendespacho) {
 		this.ordendespacho = ordendespacho;
-	}
-
-	
-
-	
+	}	
 	
 }
