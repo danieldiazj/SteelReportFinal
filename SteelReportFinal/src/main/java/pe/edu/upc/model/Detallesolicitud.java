@@ -11,8 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+
 
 import org.hibernate.validator.constraints.Range;
 
@@ -47,11 +46,6 @@ public class Detallesolicitud implements Serializable {
 	}
 
 	
-
-
-
-
-
 	public Detallesolicitud(int idDetallesolicitud, int cantiDetallesolicitud,Solicitudcompra solicitudcompra, Producto producto) {
 		super();
 		this.idDetallesolicitud = idDetallesolicitud;
