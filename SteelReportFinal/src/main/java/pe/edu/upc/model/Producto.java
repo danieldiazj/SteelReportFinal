@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table(name="Producto",uniqueConstraints={@UniqueConstraint(columnNames ={"medidProducto","nomProducto","stockProducto"})})
+@Table(name="Producto",uniqueConstraints={@UniqueConstraint(columnNames ={"medidProducto","nomProducto"})})
 public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

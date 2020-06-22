@@ -11,13 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="Obra",uniqueConstraints={@UniqueConstraint(columnNames ={"nombreObra","responsableObra"})})
+@Table(name="Obra")
 public class Obra implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +27,7 @@ public class Obra implements Serializable {
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
 	@Size(min = 2, max = 50, message = "La obra debe tener entre 3 a 50 caracteres")
-	@Column(name="nombreObra", nullable = false)
+	@Column(name="nombreObra", nullable = false,unique=true)
 	private String nombreObra;
 	
 	

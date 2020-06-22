@@ -49,7 +49,7 @@
 							<!-- th:text muestra una linea de texto -->
 								<td th:text="${o.idObra}"></td>
 								<td th:text="${o.nombreObra}"></td>
-								<td th:text="${o.cliente.nombreCliente}"></td>
+								<td th:text="${o.cliente.nombreCliente}+ ' ' + ${o.cliente.apellidosCliente}"></td>
 								<td th:text="${o.responsableObra}"></td>
 							
 								<!-- th:href Redirecciona -->

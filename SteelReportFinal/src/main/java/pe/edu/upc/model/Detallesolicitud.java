@@ -11,14 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.validator.constraints.Range;
 
 
 
 @Entity
-@Table(name="Detallesolicitud")
+@Table(name="Detallesolicitud",uniqueConstraints={@UniqueConstraint(columnNames ={"idSolicitudcompra","idProducto"})})
 public class Detallesolicitud implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

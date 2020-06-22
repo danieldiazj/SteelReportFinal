@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -20,7 +21,7 @@ import org.hibernate.validator.constraints.Range;
 
 
 @Entity
-@Table(name="Detallecompra")
+@Table(name="Detallecompra",uniqueConstraints={@UniqueConstraint(columnNames ={"descriDetallecompra","cantiDetallecompra","preciouDetallecompra","totalDetallecompra","idProducto","idOrdencompra"})})
 public class Detallecompra implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

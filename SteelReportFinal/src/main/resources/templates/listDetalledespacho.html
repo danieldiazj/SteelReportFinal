@@ -52,7 +52,7 @@
 							<!-- th:text muestra una linea de texto -->
 							<td th:text="${p.idDetalledespacho}"></td>
 								<td th:text="${p.nombdDespacho}"></td>
-								<td th:text="${p.producto.nomProducto}"></td>
+								<td th:text="${p.producto.nomProducto}+' '+(${p.producto.medidProducto}+' '+'ml')"></td>
 								<td th:text="${p.ordendespacho.idOrdendespacho}"></td>
 								<td th:text="${p.lugardDespacho}"></td>
 								<td th:text="${p.cantidaddDespacho}"></td>

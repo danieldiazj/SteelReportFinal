@@ -49,7 +49,7 @@
 						<!-- th:value Establece el value de la seleccion -->
 						<!-- sintaxis th:value="${Variable.Atributo}" -->
 						<option th:each="r: ${listaProductos}" th:value="${r.idProducto}"
-							th:text="${r.nomProducto}"
+							th:text="${r.nomProducto}+' '+(${r.medidProducto}+' '+'ml')"
 							th:selected="(${r.idProducto} == *{producto.idProducto})"></option>
 					</select>
 					<label for="solicitudcompra" class=" col-sm-2 col-form-label">Solicitud compra: </label>

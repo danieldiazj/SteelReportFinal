@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -22,7 +23,7 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "Hojaruta")
+@Table(name = "Hojaruta", uniqueConstraints={@UniqueConstraint(columnNames ={"descrHojaruta","fecDateHojaruta","presuHojaruta","obsHojaruta","idJefeventas"})})
 public class Hojaruta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -48,13 +49,13 @@ public class Hojaruta implements Serializable {
 	private String descrHojaruta;
 	
 	@Range(min = 100,max =1000000,message ="La cantidad debe de estar entre 100 y 1000000") 
-	@Column(name = "presuHojaruta", nullable = false, length = 90)
+	@Column(name = "presuHojaruta", nullable = false)
 	private int presuHojaruta;
 
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
 	@Size(min = 5, max = 90, message = "Las observaciones deben de tener entre 5 a 90 caracteres")
-	@Column(name = "obsHojaruta", nullable = false, length = 90)
+	@Column(name = "obsHojaruta", nullable = false)
 	private String obsHojaruta;
 
 	public Hojaruta() {

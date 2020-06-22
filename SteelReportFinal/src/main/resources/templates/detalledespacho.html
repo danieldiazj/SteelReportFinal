@@ -45,7 +45,7 @@
 				<select
 						class="form-control" th:field="*{producto.idProducto}">
 						<option th:each="tc: ${listaProductos}" th:value="${tc.idProducto}"
-							th:text="${tc.nomProducto}"
+							th:text="${tc.nomProducto}+' '+${tc.medidProducto}+' '+'ml'"
 							th:selected="(${tc.idProducto} == *{producto.idProducto})"></option>
 					</select>
 					

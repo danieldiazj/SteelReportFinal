@@ -56,7 +56,7 @@
 								<td th:text="${p.descriDetallecompra}"></td>
 								<td th:text="${p.preciouDetallecompra}"></td>
 								<td th:text="${p.totalDetallecompra}"></td>
-									<td th:text="${p.producto.nomProducto}"></td>
+									<td th:text="${p.producto.nomProducto}+' '+(${p.producto.medidProducto}+' '+'ml')"></td>
 								<td th:text="${p.ordencompra.idOrdencompra}"></td>
 							
 								

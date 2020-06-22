@@ -45,7 +45,7 @@
 				<select
 						class="form-control" th:field="*{cliente.idCliente}">
 						<option th:each="c: ${listaClientes}" th:value="${c.idCliente}"
-							th:text="${c.nombreCliente}"
+							th:text="${c.nombreCliente}+' '+${c.apellidosCliente}"
 							th:selected="(${c.idCliente} == *{cliente.idCliente})"></option>
 					</select>
 					

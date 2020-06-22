@@ -51,7 +51,7 @@
 							<!-- th:text muestra una linea de texto -->
 								<td th:text="${j.idHojaruta}"></td>
 								<td th:text="${j.descrHojaruta}"></td>
-								<td th:text="${j.jefeventas.nombJefeventas}"></td>
+								<td th:text="${j.jefeventas.nombJefeventas}+' '+${j.jefeventas.apellJefeventas}"></td>
 								<td th:text="${j.presuHojaruta}"></td>
 								<td th:text="${j.obsHojaruta}"></td>
 								<td th:text="${#dates.format(j.fecDateHojaruta,'dd/MM/yyyy')}"></td>
