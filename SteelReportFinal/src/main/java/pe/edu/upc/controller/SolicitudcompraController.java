@@ -32,6 +32,10 @@ public class SolicitudcompraController {
 	@Autowired
 	private ISolicitudcompraService orService;	
 	
+	@RequestMapping("/bienvenido")
+	public String irSolicitudCompraBienvenido() {
+		return "bienvenido";
+	}
 	@RequestMapping("/")
 	public String irOrdencompra(Map<String, Object> model) {
 		model.put("listaSolicitudcompra", orService.listar());
