@@ -129,7 +129,7 @@ public class ProductoController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaProductos", listaProductos);
-		return "buscar";
+		return "listProducto";
 	}
 
 	@RequestMapping("/irBuscar")

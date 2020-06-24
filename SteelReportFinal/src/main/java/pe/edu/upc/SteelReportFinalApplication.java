@@ -24,27 +24,27 @@ public class SteelReportFinalApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		String passwordjfcomercial = "jefeventacomercial";
-		String passwordjfindustrial = "jefeventas2";
-		String passwordjfconstructor="jefeventas3";
-		String passwordcli = "clienteaceros";
+		String passwordjfcomercial = "123";
+		String passwordjfindustrial = "123";
+		String passwordjfconstructor="123";
+		String passwordcli = "123";
 		
-		for(int i=0; i<2; i++) {
+		for(int i=0; i<1; i++) {
 			String bcryptPassword1 = passwordEncoder.encode(passwordjfcomercial);
 			System.out.println(bcryptPassword1);
 		}
 		
-		for(int i=0; i<2; i++) {
+		for(int i=0; i<1; i++) {
 			String bcryptPassword2 = passwordEncoder.encode(passwordjfindustrial);
 			System.out.println(bcryptPassword2);
 		}
 
-		for(int i=0; i<2; i++) {
+		for(int i=0; i<1; i++) {
 			String bcryptPassword3 = passwordEncoder.encode(passwordjfconstructor);
 			System.out.println(bcryptPassword3);
 		}
 		
-		for(int i=0; i<2; i++) {
+		for(int i=0; i<1; i++) {
 			String bcryptPassword4 = passwordEncoder.encode(passwordcli);
 			System.out.println(bcryptPassword4);
 		}
