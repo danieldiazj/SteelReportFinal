@@ -48,6 +48,10 @@
 	                         <li class="active"><a th:href="@{/ordendespacho/listar}">Orden despacho</a></li>
 	                         <li class="active"><a th:href="@{/detallecompra/listar}">Detalle compra</a></li>
 	                          <li class="active"><a th:href="@{/detalledespacho/listar}">Detalle despacho</a></li>
+	                          <li class="active"><form id="logoutForm" th:action="@{/logout}" method="post">
+										<a onclick="document.getElementById('logoutForm').submit();"
+										type="submit" href="#" >Log out</a>
+									</form></li>
 						</ul>
 						 
 					</div>
