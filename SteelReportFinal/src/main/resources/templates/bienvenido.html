@@ -660,10 +660,10 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                  <form id="logoutForm" th:action="@{/logout}" method="post">
-										<a onclick="document.getElementById('logoutForm').submit();"
-										type="button" href="#" >Log out</a>
-									</form>
+                   <form id="logoutForm" th:action="@{/logout}" method="post"  > 
+                   <a onclick="document.getElementById('logoutForm').submit();"
+										type="submit" href="#" class="btn btn-primary">Logout</a>
+                   </form>
                   
                 </div>
               </div>
