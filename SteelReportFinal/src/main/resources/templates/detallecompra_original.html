@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Detalle compra</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+	<!-- Los fragment se insertan ya sea con th:include o th:replace -->
+	<!-- th:include simplemente se inserta dentro del espacio asignado -->
+	<!-- th:replace remplaza todo el espacio asignado por el fragment correspondiente -->
+	<!-- sintaxis th:include/replace="rutafragment :: Nombre del fragment -->
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<!-- th:action toma la accion de un form que se ejecutara por medio de un boton-->
+		<!-- @{} Expresion de enlace -->
+		<!-- ${} Declaracion de Variable -->
+		<!-- th:object declara un objeto que sera usado por los *{} -->
+		<form th:action="@{/detallecompra/registrar}" method="post" th:object="${detallecompra}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			<!-- *{} Setea la variable -->
+				<label for="iddetallecompra">ID:</label> <input type="text"
+					class="form-control" th:field="*{idDetallecompra}"></input>
+
+				<div class="form-group">
+					<label for="cantidad">CANTIDAD:</label> <input type="text"
+						th:field="*{cantiDetallecompra}" class="form-control" id="cantidad"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('cantiDetallecompra')}" th:errors="*{cantiDetallecompra}"></div>
+						
+						
+						
+						<label for="DESCRIPCION">DESCRIPCION:</label> <input type="text"
+						th:field="*{descriDetallecompra}" class="form-control" id="DESCRIPCION"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('descriDetallecompra')}" th:errors="*{descriDetallecompra}">
+						</div>
+						
+						
+						<label for="precio">PRECIO UNITARIO:</label> <input type="text"
+						th:field="*{preciouDetallecompra}" class="form-control" id="precio"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('preciouDetallecompra')}" th:errors="*{preciouDetallecompra}">
+						</div>
+						
+						
+						
+						<label for="total">TOTAL:</label> <input type="text"
+						th:field="*{totalDetallecompra}" class="form-control" id="total"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('totalDetallecompra')}" th:errors="*{totalDetallecompra}">
+						</div>
+						
+
+					
+						
+					<label for="producto" class=" col-sm-2 col-form-label">Producto: </label>
+					<select
+						class="form-control" th:field="*{producto.idProducto}">
+						<!-- th:each Itera los elementos de un arreglo -->
+						<!-- sintaxis th:each="Variable: ${Lista}" -->
+						<!-- th:value Establece el value de la seleccion -->
+						<!-- sintaxis th:value="${Variable.Atributo}" -->
+						<option th:each="r: ${listaProductos}" th:value="${r.idProducto}"
+							th:text="${r.nomProducto}+' '+${r.medidProducto}+' '+'ml'"
+							th:selected="(${r.idProducto} == *{producto.idProducto})"></option>
+					</select>
+					<label for="ordencompra" class=" col-sm-2 col-form-label">Orden compra: </label>
+				<select
+						class="form-control" th:field="*{ordencompra.idOrdencompra}">
+						<option th:each="d: ${listaOrdencompra}" th:value="${d.idOrdencompra}"
+							th:text="${d.idOrdencompra}"
+							th:selected="(${d.idOrdencompra} == *{ordencompra.idOrdencompra})"></option>
+					</select>
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/detallecompra/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
