@@ -25,7 +25,7 @@ public class Producto implements Serializable {
 	private int idProducto;
 	
 
-	@Range(min = 1,max = 10000,message ="La medida del producto de estar entre 1 ml y 10000 ml" ) 
+	@Range(min = 1,max = 10000,message ="La medida del producto de estar entre 1 mm y 10000 mm" ) 
 	@Column(name="medidProducto", nullable = false)
 	private int medidProducto;
 	
