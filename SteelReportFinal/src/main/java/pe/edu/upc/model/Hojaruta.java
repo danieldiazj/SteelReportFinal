@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -36,7 +37,7 @@ public class Hojaruta implements Serializable {
 	private Jefeventas jefeventas;
 
 	@NotNull
-	// @Past(message="No puedes seleccionar un dia que NO existe")
+	@Future(message="No puedes seleccionar un dia que NO existe")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "fecDateHojaruta")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
