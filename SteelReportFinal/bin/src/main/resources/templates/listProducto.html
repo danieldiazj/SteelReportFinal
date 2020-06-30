@@ -129,6 +129,7 @@
 
 			<hr class="sidebar-divider">
 			
+			
 			<div class="version" id="version-ruangadmin"></div>
 		</ul>
 		<!-- Sidebar -->
@@ -308,7 +309,8 @@
 							aria-expanded="false"> <img
 								class="img-profile rounded-circle" src="/files/img/boy.png"
 								style="max-width: 60px"> <span
-								class="ml-2 d-none d-lg-inline text-white small">Hola!</span>
+								class="ml-2 d-none d-lg-inline text-white small">Maman
+									Ketoprak</span>
 						</a>
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -337,7 +339,7 @@
 				<div class="container-fluid" id="container-wrapper">
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Lista de detalles de compra</h1>
+						<h1 class="h3 mb-0 text-gray-800">Lista de productos</h1>
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="./">Home</a></li>
 							<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -346,45 +348,39 @@
 
 					<div class="table-responsive">
 
-						<a th:href="@{/detallecompra/irRegistrar}" id="add-row"
+						<a th:href="@{/producto/irRegistrar}" id="add-row"
 							type="button" class="btn btn-sm btn-success"> AGREGAR </a> 
 							
-						<!-- 	<a
-							th:href="@{/detallecompra/irBuscar}" id="add-row" type="button"
-							class="btn btn-sm btn-light"> BUSCAR </a>  -->
+							<!--  <a
+							th:href="@{/producto/irBuscar}" id="add-row" type="button"
+							class="btn btn-sm btn-light"> BUSCAR </a>-->
 							
-							<br> <br>
+							 <br> <br>
 						<table class="table align-items-center table-flush">
 							<thead class="thead-light">
 								<tr>
 									<th>CODIGO</th>
-									<th>CANTIDAD</th>
-									<th>DESCRIPCION</th>
-									<th>PRECIO UNITARIO</th>
-									<th>TOTAL</th>
+									<th>MEDIDA(ML)</th>
 									<th>PRODUCTO</th>
-									<th>ORDEN COMPRA</th>
+									<th>STOCK</th>
+									
 									<th>OPERACION</th>
 									<th>OPERACION</th>
 									
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="p: ${listaDetallecompra}">
-							<!-- th:text muestra una linea de texto -->
-							<td th:text="${p.idDetallecompra}"></td>
-								<td th:text="${p.cantiDetallecompra}"></td>
-								<td th:text="${p.descriDetallecompra}"></td>
-								<td th:text="${p.preciouDetallecompra}"></td>
-								<td th:text="${p.totalDetallecompra}"></td>
-									<td th:text="${p.producto.nomProducto}+' '+(${p.producto.medidProducto}+' '+'ml')"></td>
-								<td th:text="${p.ordencompra.idOrdencompra}"></td>
+								<tr th:each="producto: ${listaProductos}">
+									<td th:text="${producto.idProducto}"></td>
+									<td th:text="${producto.medidProducto}"></td>				
+									<td th:text="${producto.nomProducto}"></td>
+									<td th:text="${producto.stockProducto}"></td>
 								
 							
 								
 								<!-- th:href Redirecciona -->
-								<td><a th:href="@{/detallecompra/eliminar?id=}+${p.idDetallecompra}" class="btn btn-sm btn-danger">Eliminar</a></td>
-								<td><a th:href="@{'/detallecompra/modificar/' + ${p.idDetallecompra}}" class="btn btn-sm btn-primary">Modificar</a></td>
+								<td><a th:href="@{/producto/eliminar?id=}+${producto.idProducto}" class="btn btn-sm btn-danger">Eliminar</a></td>
+								<td><a th:href="@{'/producto/modificar/' + ${producto.idProducto}}" class="btn btn-sm btn-primary">Modificar</a></td>
 
 
 							</tr>

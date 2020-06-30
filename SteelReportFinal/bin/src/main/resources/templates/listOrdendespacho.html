@@ -33,7 +33,7 @@
 			</a>
 			<hr class="sidebar-divider my-0">
 			<li class="nav-item active"><a class="nav-link"
-				href="index.html" th:href="@{/solicitudcompra/bienvenido}"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a>
+				href="index.html" th:href="@{/solicitudcompra/bienvenido}" > <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a>
 			</li>
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">Features</div>
@@ -337,7 +337,7 @@
 				<div class="container-fluid" id="container-wrapper">
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Lista de detalles de compra</h1>
+						<h1 class="h3 mb-0 text-gray-800">Lista de Ordenes de despacho</h1>
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="./">Home</a></li>
 							<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -346,45 +346,41 @@
 
 					<div class="table-responsive">
 
-						<a th:href="@{/detallecompra/irRegistrar}" id="add-row"
+						<a th:href="@{/ordendespacho/irRegistrar}" id="add-row"
 							type="button" class="btn btn-sm btn-success"> AGREGAR </a> 
 							
-						<!-- 	<a
-							th:href="@{/detallecompra/irBuscar}" id="add-row" type="button"
-							class="btn btn-sm btn-light"> BUSCAR </a>  -->
+							<!--  <a
+							th:href="@{/ordendespacho/irBuscar}" id="add-row" type="button"
+							class="btn btn-sm btn-light"> BUSCAR </a>--> 
+							
 							
 							<br> <br>
 						<table class="table align-items-center table-flush">
 							<thead class="thead-light">
 								<tr>
 									<th>CODIGO</th>
-									<th>CANTIDAD</th>
-									<th>DESCRIPCION</th>
-									<th>PRECIO UNITARIO</th>
-									<th>TOTAL</th>
-									<th>PRODUCTO</th>
-									<th>ORDEN COMPRA</th>
+									<th>JEFE</th>
+									<th>FECHA</th>
+									
 									<th>OPERACION</th>
 									<th>OPERACION</th>
 									
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="p: ${listaDetallecompra}">
+								<tr th:each="j: ${listaOrdendespacho}">
 							<!-- th:text muestra una linea de texto -->
-							<td th:text="${p.idDetallecompra}"></td>
-								<td th:text="${p.cantiDetallecompra}"></td>
-								<td th:text="${p.descriDetallecompra}"></td>
-								<td th:text="${p.preciouDetallecompra}"></td>
-								<td th:text="${p.totalDetallecompra}"></td>
-									<td th:text="${p.producto.nomProducto}+' '+(${p.producto.medidProducto}+' '+'ml')"></td>
-								<td th:text="${p.ordencompra.idOrdencompra}"></td>
+								<td th:text="${j.idOrdendespacho}"></td>
+						
+								<td th:text="${j.jefeventas.nombJefeventas}+' '+${j.jefeventas.apellJefeventas}"></td>
+								
+								<td th:text="${#dates.format(j.fecDateOrdendespacho,'dd/MM/yyyy')}"></td>
 								
 							
 								
 								<!-- th:href Redirecciona -->
-								<td><a th:href="@{/detallecompra/eliminar?id=}+${p.idDetallecompra}" class="btn btn-sm btn-danger">Eliminar</a></td>
-								<td><a th:href="@{'/detallecompra/modificar/' + ${p.idDetallecompra}}" class="btn btn-sm btn-primary">Modificar</a></td>
+								<td><a th:href="@{/ordendespacho/eliminar?id=}+${j.idOrdendespacho}" class="btn btn-sm btn-danger">Eliminar</a></td>
+								<td><a th:href="@{'/ordendespacho/modificar/' + ${j.idOrdendespacho}}" class="btn btn-sm btn-primary">Modificar</a></td>
 
 
 							</tr>
